@@ -1,3 +1,6 @@
+import random
+
+
 class QuickSort(object):
 
     def __init__(self):
@@ -6,25 +9,36 @@ class QuickSort(object):
     def __call__(self, mlist):
         return self.quicksort(mlist, 0, len(mlist) - 1)
 
-    def _median(self, a, b, c):
-        if (a - b) * (b - c) > -1:
-            return b
-        elif (a - b) * (a - c) < 1 :
-            return a
-        else:
-            return c
+    def swap(self, mlist, i, j):
+        tmp = mlist[i]
+        mlist[i] = mlist[j]
+        mlist[j] = tmp
 
-    def quicksort(self, mlist, st, en):
-        if st > en:
-            return mlist
-        pivot = self._median(mlist[st], mlist[en], mlist[(st + en)//2])
-        self._partition(mlist, pivot, st, en)
+    def quicksort(self, mlist, first, last):
+        if first < last:
+            index = self._partition(mlist, first, last)
 
-    def _partition(self, mlist, pivot, st, en):
-        value = mlist[pivot]
-        while st < en:
-            if st != pivot or en != pivot:
-                continue
-            if mlist[st] > mlist[en]:
-                pass
+            self.quicksort(mlist, first, index - 1)
+            self.quicksort(mlist, index + 1, last)
+        return mlist
 
+    def _partition(self, mlist, first, last):
+        left = first + 1
+        right = last
+        done = False
+        pivot = mlist[first]
+        while not done:
+            while left <= right and mlist[left] <= pivot:
+                left += 1
+            while right >= left and mlist[right] >= pivot:
+                right -= 1
+            if right < left:
+                done = True
+            else:
+                self.swap(mlist, left, right)
+        self.swap(mlist, first, right)
+        return right
+
+quicksort = QuickSort()
+l = random.sample(range(100), 10)
+print quicksort(l)

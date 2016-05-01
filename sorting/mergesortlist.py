@@ -34,6 +34,4 @@ class MergeSort(object):
         return resplist
 
 mergesort = MergeSort()
-
-t = Timer(lambda: mergesort(random.sample(xrange(100000000), 1000))).repeat(1000)
-print t.timeit(number=1)
+print mergesort(random.sample(range(100), 10))

@@ -1,5 +1,4 @@
 import random
-from profilehooks import profile
 from itertools import islice
 from collections import deque
 
@@ -12,7 +11,6 @@ class MergeSort(object):
     def __call__(self, mlist):
         return self.mergesort(mlist)
 
-    @profile
     def mergesort(self, mlist):
         if len(mlist) <= 1:
             return mlist
@@ -40,6 +38,6 @@ class MergeSort(object):
 
 
 mergesort = MergeSort()
-mergesort(deque(random.sample(range(100000000), 1000)))
+print mergesort(deque(random.sample(range(100000000), 1000)))
 
 

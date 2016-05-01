@@ -17,10 +17,10 @@ class LinkedList(object):
 
     @Node.make_node
     def add(self, item):
-        if self._add_first(item):
-            return
-        item.next_node = self._head
-        self._head = item
+        if not self._add_first(item):
+            item.next_node = self._head
+            self._head = item
+        return self
 
     @Node.make_node
     def add_right(self, item):
@@ -67,3 +67,12 @@ class LinkedList(object):
     def __len__(self):
         return sum(1 for i in self)
 
+    def __getitem__(self, item):
+        current = self._head
+        size = self.size()
+        if not size or item >= size:
+            raise IndexError
+        while item > 0:
+            current = current.next_node
+            item -= 1
+        return current.value
