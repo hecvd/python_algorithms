@@ -1,4 +1,4 @@
-from __future__ import division
+from __future__ import division, print_function
 from priority_task import PriorityTask
 from datetime import datetime, timedelta
 import random
@@ -66,6 +66,8 @@ class PriorityList:
 
 pl = PriorityList()
 pl.build([(a, datetime.utcnow() + timedelta(seconds=random.randint(0, 10))) for a in random.sample([0, 1, 2] * 5, 15)])
+
+print()
 
 while pl.size():
     print('get task: {}'.format(pl.del_max()))

@@ -5,6 +5,7 @@ PRIORITY_HIGH = 2
 PRIORITY_MIDDLE = 1
 PRIORITY_LOW = 0
 
+PRIORITY_DICT = {PRIORITY_HIGH: 'HIGH', PRIORITY_MIDDLE: 'MIDDLE', PRIORITY_LOW: 'LOW'}
 
 class PriorityTask(object):
 
@@ -55,7 +56,7 @@ class PriorityTask(object):
     #     return self.index + other
 
     def __str__(self):
-        return 'Priority: %s Timestamp: %s' % (self.priority, self.timestamp)
+        return 'Priority: %s Timestamp: %s' % (PRIORITY_DICT[self.priority], self.timestamp)
 
     def __repr__(self):
         return str(self)
