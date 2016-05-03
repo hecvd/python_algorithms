@@ -65,7 +65,7 @@ class PriorityList:
         return self.current_size
 
 pl = PriorityList()
-pl.build([(a, datetime.utcnow() + timedelta(seconds=random.randint(0, 10))) for a in random.sample([0, 1, 2] * 5, 15)])
+pl.build([(a, datetime.utcnow() + timedelta(seconds=random.randint(0, 100))) for a in random.sample([0, 1, 2] * 5, 15)])
 
 print()
 
