@@ -18,7 +18,7 @@ class Fibonacci(object):
     def generator(self, n):
         a, b = 1, 1
 
-        for _ in range(n - 1):
+        for t in range(n - 1):
             a, b = b, a + b
             yield a
 
@@ -26,7 +26,7 @@ class Fibonacci(object):
     def non_recursive(self, n):
         a, b = 1, 1
 
-        for _ in range(n-1):
+        for t in range(n-1):
             a, b = b, a + b
 
         return a

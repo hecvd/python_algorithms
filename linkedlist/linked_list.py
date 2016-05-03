@@ -35,7 +35,7 @@ class LinkedList(object):
         return any(elem for elem in self if elem == value)
 
     def remove(self, value):
-        # nodes = [_ for _ in self.iternodes(True) if _.value == value]
+        # nodes = [t for t in self.iternodes(True) if t.value == value]
         if self.is_empty():
             return
         found = False
@@ -62,7 +62,7 @@ class LinkedList(object):
             current = current.next_node
 
     def __str__(self):
-        return str(' '.join(str(_) for _ in self))
+        return str(' '.join(str(t) for t in self))
 
     def __len__(self):
         return sum(1 for i in self)
